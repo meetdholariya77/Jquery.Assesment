@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Checker</title>
+<style>
+    #password-strength {
+        font-size: 14px;
+    }
+    .weak {
+        color: red;
+    }
+    .medium {
+        color: orange;
+    }
+    .strong {
+        color: green;
+    }
+</style>
+</head>
+<body>
+    <h2>Password Checker</h2>
+    <input type="password" id="password" placeholder="Enter your password">
+    <div id="password-strength"></div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="passChecker.jquery.js"></script>
+<script>
+$(document).ready(function(){
+    $('#password').passChecker(); // Initialize passChecker plugin
+});
+</script>
+</body>
+</html>

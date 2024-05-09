@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Checker</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    #password-strength {
+        font-size: 14px;
+    }
+    .weak {
+        color: red;
+    }
+    .medium {
+        color: orange;
+    }
+    .strong {
+        color: green;
+    }
+</style>
+</head>
+<body>
+    <h2>Password Checker</h2>
+    <input type="password" id="password" placeholder="Enter your password">
+    <div id="password-strength"></div>
+
+<script>
+$(document).ready(function(){
+    $('#password').keyup(function(){
+        var password = $(this).val();
+        var strength = 0;
+
+        //  6 characters, increase strength
+        if (password.length >= 6) {
+            strength++;
+        }
+
+        //  at least one digit, increase strength
+        if (password.match(/\d+/)) {
+            strength++;
+        }
+
+        //  at least one lowercase letter,
+        if (password.match(/[a-z]+/)) {
+            strength++;
+        }
+
+        //  at least one uppercase letter,
+        if (password.match(/[A-Z]+/)) {
+            strength++;
+        }
+
+        // If password  at least one special character,
+        if (password.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/)) {
+            strength++;
+        }
+
+        // Output the strength based on criteria
+        if (strength <= 1) {
+            $('#password-strength').removeClass().addClass('weak').text('Weak');
+        } else if (strength == 2 || strength == 3) {
+            $('#password-strength').removeClass().addClass('medium').text('Medium');
+        } else {
+            $('#password-strength').removeClass().addClass('strong').text('Strong');
+        }
+    });
+});
+</script>
+</body>
+</html>
